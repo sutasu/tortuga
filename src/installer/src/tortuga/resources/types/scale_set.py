@@ -28,6 +28,8 @@ class ScaleSetResourceRequestSchema(BaseResourceRequestSchema):
     max_nodes = fields.Integer()
     desired_nodes = fields.Integer()
     instance_template_name = fields.String()
+    tags = fields.Dict()
+    advanced = fields.Dict()
 
 
 class ScaleSetResourceRequest(BaseResourceRequest):
@@ -45,3 +47,5 @@ class ScaleSetResourceRequest(BaseResourceRequest):
         self.desired_nodes: int = kwargs.get('desired_nodes', 0)
         self.instance_template_name: Optional[str] = \
             kwargs.get('instance_template_name', None)
+        self.tags: Dict[str, str] = kwargs.get('tags', {})
+        self.advanced: Dict[str, str] = kwargs.get('advanced', {})
